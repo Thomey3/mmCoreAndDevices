@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <CudaCompile Include="bxjs.cuh" />
+    <ClInclude Include="QT12136DC.h" />
+    <ClInclude Include="QT12136DC\include\3rd\QTXdmaApi.h" />
+    <ClInclude Include="QT12136DC\include\configdata.h" />
+    <ClInclude Include="QT12136DC\include\databuffer.h" />
+    <ClInclude Include="QT12136DC\include\Mutex.h" />
+    <ClInclude Include="QT12136DC\include\pingpong_example.h" />
+    <ClInclude Include="QT12136DC\include\pthread.h" />
+    <ClInclude Include="QT12136DC\include\pub.h" />
+    <ClInclude Include="QT12136DC\include\qtpciexdma.h" />
+    <ClInclude Include="QT12136DC\include\qtxdmaapiinterface.h" />
+    <ClInclude Include="QT12136DC\include\setting.h" />
+    <ClInclude Include="QT12136DC\include\ThreadFileToDisk.h" />
+    <ClInclude Include="TwoPhotonMicroscope.h" />
+    <ClInclude Include="NIDAQ.h" />
+    <ClInclude Include="optotune.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="QT12136DC.cpp" />
+    <ClCompile Include="QT12136DC\source\databuffer.cpp" />
+    <ClCompile Include="QT12136DC\source\MutexWin.cpp" />
+    <ClCompile Include="QT12136DC\source\pingpong_function.cpp" />
+    <ClCompile Include="QT12136DC\source\pub.cpp" />
+    <ClCompile Include="QT12136DC\source\qtxdmaapiinterface.cpp" />
+    <ClCompile Include="QT12136DC\source\ThreadFileToDisk.cpp" />
+    <ClCompile Include="TwoPhotonMicroscope.cpp" />
+    <ClCompile Include="NIDAQ.cpp" />
+    <ClCompile Include="NIDAQ\NIAnalogOutputPort.cpp" />
+    <ClCompile Include="NIDAQ\NIDigitalOutputPort.cpp" />
+    <ClCompile Include="optotune.cpp" />
+    <ClCompile Include="QT12136DC\source\TraceLog.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\MMDevice\MMDevice-SharedRuntime.vcxproj">
+      <Project>{b8c95f39-54bf-40a9-807b-598df2821d55}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <CudaCompile Include="bxjs.cu" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{D7CDF73F-56E4-44F1-B5FF-2D63F32D1EDF}</ProjectGuid>
+    <RootNamespace>TwoPhotonMicroscope</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseInteloneMKL>Sequential</UseInteloneMKL>
+    <UseILP64Interfaces1A>true</UseILP64Interfaces1A>
+    <UseIntelMPI>true</UseIntelMPI>
+    <UseInteloneTBB>false</UseInteloneTBB>
+    <InstrumentInteloneTBB>false</InstrumentInteloneTBB>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 12.6.props" />
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\buildscripts\VisualStudio\MMCommon.props" />
+    <Import Project="..\..\buildscripts\VisualStudio\MMDeviceAdapter.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\buildscripts\VisualStudio\MMCommon.props" />
+    <Import Project="..\..\buildscripts\VisualStudio\MMDeviceAdapter.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>..\TwoPhotonMicroscope\eigen-3.3.8;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>..\TwoPhotonMicroscope\eigen-3.3.8;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL</PreprocessorDefinitions>
+      <ConformanceMode>Default</ConformanceMode>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>..\TwoPhotonMicroscope\NIDAQ;..\TwoPhotonMicroscope\QT12136DC\include\3rd;..\TwoPhotonMicroscope\QT12136DC\include\logclass;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>true</EnableUAC>
+      <AdditionalLibraryDirectories>..\TwoPhotonMicroscope\NIDAQ;..\TwoPhotonMicroscope\QT12136DC\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>NIDAQmx.lib;QTXdmaApi.lib;pthreadVC2.lib;cudart.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL</PreprocessorDefinitions>
+      <ConformanceMode>Default</ConformanceMode>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>..\TwoPhotonMicroscope\NIDAQ;..\TwoPhotonMicroscope\QT12136DC\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>true</EnableUAC>
+      <AdditionalLibraryDirectories>..\TwoPhotonMicroscope\NIDAQ;..\TwoPhotonMicroscope\QT12136DC\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>NIDAQmx.lib;QTXdmaApi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 12.6.targets" />
+  </ImportGroup>
+</Project>
